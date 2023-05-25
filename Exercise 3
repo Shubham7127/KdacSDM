@@ -1,0 +1,152 @@
+mysql> select* from S;
++------+----------+--------+--------+
+| Sno  | Sname    | Status | City   |
++------+----------+--------+--------+
+| S1   | Mahindra | 10     | London |
+| S2   | TATA     | 20     | Paris  |
+| S3   | Reliance | 30     | Athens |
+| S4   | BAJAJ    | 40     | Paris  |
+| S5   | ADANI    | 35     | London |
++------+----------+--------+--------+
+5 rows in set (0.01 sec)
+
+mysql> select* from P;
++------+-----------+-------+--------+--------+
+| Pno  | Pname     | Color | Weight | City   |
++------+-----------+-------+--------+--------+
+| P1   | Engine    | Gray  | 20000  | London |
+| P2   | Cylinder  | Red   | 5000   | Paris  |
+| P3   | Laptop    | Black | 1500   | Athens |
+| P4   | Wheel     | Black | 10000  | Paris  |
+| P5   | Capacitor | BLue  | 500    | London |
++------+-----------+-------+--------+--------+
+
+mysql> select* from J;
++------+-------------------+--------+
+| Jno  | Jname             | City   |
++------+-------------------+--------+
+| J1   | nano project      | London |
+| J2   | electric project  | Paris  |
+| J3   | Made in Greece    | Athens |
+| J4   | france technology | Paris  |
+| J5   | Mega Project      | London |
++------+-------------------+--------+
+
+mysql> select concat(upper(substr(Sname,'1','1')),substr(Sname,'2')) from S;
++--------------------------------------------------------+
+| concat(upper(substr(Sname,'1','1')),substr(Sname,'2')) |
++--------------------------------------------------------+
+| Mahindra                                               |
+| TATA                                                   |
+| Reliance                                               |
+| BAJAJ                                                  |
+| ADANI                                                  |
++--------------------------------------------------------+
+5 rows in set (0.00 sec)
+
+mysql> select concat(lower(substr(Sname,'1','1')),substr(Sname,'2')) from S;
++--------------------------------------------------------+
+| concat(lower(substr(Sname,'1','1')),substr(Sname,'2')) |
++--------------------------------------------------------+
+| mahindra                                               |
+| tATA                                                   |
+| reliance                                               |
+| bAJAJ                                                  |
+| aDANI                                                  |
++--------------------------------------------------------+
+
+mysql> select upper(Sname) from S;
++--------------+
+| upper(Sname) |
++--------------+
+| MAHINDRA     |
+| TATA         |
+| RELIANCE     |
+| BAJAJ        |
+| ADANI        |
++--------------+
+5 rows in set (0.00 sec)
+
+mysql> select lower(Sname) from S;
++--------------+
+| lower(Sname) |
++--------------+
+| mahindra     |
+| tata         |
+| reliance     |
+| bajaj        |
+| adani        |
++--------------+
+
+
+mysql> select lpad(Sname,'25',' ') from S;
++---------------------------+
+| lpad(Sname,'25',' ')      |
++---------------------------+
+|                  Mahindra |
+|                      TATA |
+|                  Reliance |
+|                     BAJAJ |
+|                     ADANI |
++---------------------------+
+
+mysql> select replace(Sname,'an','AB') FROM S;
++--------------------------+
+| replace(Sname,'an','AB') |
++--------------------------+
+| Mahindra                 |
+| TATA                     |
+| ReliABce                 |
+| AdABi                    |
+| Bajaj                    |
++--------------------------+
+
+mysql> select length(Sname) from S;
++---------------+
+| length(Sname) |
++---------------+
+|             8 |
+|             4 |
+|             8 |
+|             5 |
+|             5 |
++---------------+
+5 rows in set (0.00 sec)
+
+mysql> select Sname, length(Sname) from S;
++----------+---------------+
+| Sname    | length(Sname) |
++----------+---------------+
+| Mahindra |             8 |
+| TATA     |             4 |
+| Reliance |             8 |
+| Adani    |             5 |
+| Bajaj    |             5 |
++----------+---------------+
+
+mysql> select * from S where soundex(Sname)=soundex('Adany');
++------+-------+--------+-------+
+| Sno  | Sname | Status | City  |
++------+-------+--------+-------+
+| S4   | Adani | 40     | Paris |
++------+-------+--------+-------+
+
+mysql> select case when Status=10 then 'TEN' when Status=20 then 'TWENTY' when Status=30 then 'THIRTY' when Status=40 then 'FORTY' else'others' end  WORD, Sname,Status from S;
++--------+----------+--------+
+| WORD   | Sname    | Status |
++--------+----------+--------+
+| TEN    | Mahindra | 10     |
+| TWENTY | TATA     | 20     |
+| THIRTY | Reliance | 30     |
+| FORTY  | Adani    | 40     |
+| others | Bajaj    | 35     |
++--------+----------+--------+
+
+mysql> select dayname(sysdate()) from dual;
++--------------------+
+| dayname(sysdate()) |
++--------------------+
+| Tuesday            |
++--------------------+
+
+
